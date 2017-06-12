@@ -45,7 +45,6 @@ class App extends Component {
         <div className="app">
           <div className={this.state.inIntro === true ? "app-intro": "app-intro fade-out"} onClick={this.toggleIntro} >
             <img src={currentLogo} className="app-logo intro" alt="logo" />
-            <canvas className="processing-intro" data-processing-sources={headerProcessing} />
           </div>
           <div className={this.state.inIntro === true ? "app-main" : "app-main fade-in"}>
             <div>
@@ -55,7 +54,6 @@ class App extends Component {
                 </Link>
                 <div className="button-container">{viewButtons}</div>
               </div>
-              <canvas className="processing-header" data-processing-sources={headerProcessing} />
             </div>
             <div className="content-container">
               <Route exact path="/" component={Home}/>
@@ -68,6 +66,7 @@ class App extends Component {
               <Route exact path="/contact" component={Contact}/>
             </div>
           </div>
+          <canvas className="processing-bg" data-processing-sources={headerProcessing} />
         </div>
       </Router>
     );
