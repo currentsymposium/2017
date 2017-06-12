@@ -1,9 +1,9 @@
-int howMany = 110;
+int howMany = 100;
 ExLine [] Elem = new ExLine[howMany];
 
 void setup() {
   size(800, 600);
-  background(30,40,130);
+  background(40,40,130);
   stroke(250);
   strokeWeight(.4);
   float x = 0;
@@ -16,7 +16,7 @@ void setup() {
 }
 
 void draw() {
-  background(30,40,130);
+  background(40,40,130);
   for (int i = 0; i < Elem.length; i++) {
     Elem[i].display();
   }
