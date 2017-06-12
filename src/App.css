@@ -12,6 +12,9 @@
   opacity: 1;
   visibility: visible;
   transition: opacity 1s linear;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 .app-intro.fade-out {
   opacity: 0;
