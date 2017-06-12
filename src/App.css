@@ -29,7 +29,6 @@
 
 .app-main {
   z-index: 1;
-  background-color: white;
   opacity: 0;
   visibility: hidden;
   transition: visibility 0s 1s, opacity 1s linear;
@@ -71,10 +70,11 @@
 a.view-link {
   margin: 5px;
   text-decoration: none;
-  color: black;
+  color: white;
+  font-size: large;
 }
 a.view-link:visited {
-  color: black;
+  color: white;
 }
 
 .active-button {
@@ -85,9 +85,21 @@ a.view-link:visited {
   padding: 10px;
   height: calc(100vh - 150px - 20px - 20px);
   overflow-y: scroll;
-  background-color: lightgrey;
+  color: white;
+  /*background-color: lightgrey;*/
 }
 
 .artist-photo {
   height: 200px;
+}
+
+.processing-header {
+  z-index: -1;
+  height: 170px;
+  width: 100%;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  height: 100%;
 }
