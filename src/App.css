@@ -1,0 +1,93 @@
+.app {
+  text-align: center;
+}
+
+.app-intro {
+  z-index: 2;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 100vw;
+  height: 100vh;
+  opacity: 1;
+  visibility: visible;
+  transition: opacity 1s linear;
+}
+.app-intro.fade-out {
+  opacity: 0;
+  visibility: hidden;
+  transition: visibility 0s 1s, opacity 1s linear;
+}
+.processing-intro {
+  z-index: -1;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 100vw;
+  height: 100vh;
+}
+
+.app-main {
+  z-index: 1;
+  background-color: white;
+  opacity: 0;
+  visibility: hidden;
+  transition: visibility 0s 1s, opacity 1s linear;
+}
+.app-main.fade-in {
+  opacity: 1;
+  visibility: visible;
+  transition: opacity 1s linear;
+}
+
+.app-header {
+  height: 150px;
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.app-logo.intro {
+  height: 400px;
+}
+
+.app-logo.main {
+  height: 154px;
+}
+
+.button-container {
+  /*width: 350px;*/
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: center;
+  align-content: center;
+}
+
+.view-button {
+  /*width: 100px;*/
+}
+a.view-link {
+  margin: 5px;
+  text-decoration: none;
+  color: black;
+}
+a.view-link:visited {
+  color: black;
+}
+
+.active-button {
+  background-color: #4286f4;
+}
+
+.content-container {
+  padding: 10px;
+  height: calc(100vh - 150px - 20px - 20px);
+  overflow-y: scroll;
+  background-color: lightgrey;
+}
+
+.artist-photo {
+  height: 200px;
+}
