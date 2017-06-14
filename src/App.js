@@ -6,7 +6,7 @@ import {
 } from 'react-router-dom';
 import currentLogo from './images/current-logo.png';
 import solPhoto from './images/soledad_munoz.jpg';
-import bgProcessing from './processing/background.pde'
+// import bgProcessing from './processing/background.pde'
 import headerProcessing from './processing/header.pde'
 import './App.css';
 
@@ -38,8 +38,9 @@ class App extends Component {
     this.setState({view: "Home"})
   }
   render() {
-    const availableViews = ['About', 'Artists', 'Organizers', 'Collaborators', 'Workshops', 'Panels', 'Contact'];
-    const viewButtons = availableViews.map((view, index) => <ViewButton key={index} view={view} currentView={this.state.view} toggleView={this.toggleView}/>);
+    const availableViews = ['Artists', 'Panels + Workshops', 'Volunteers', 'Contact'];
+    const viewButtons = availableViews.map((view, index) => <ViewButton key={index} view={view} currentView={this.state.view} toggleView={this.toggleView} dropdown={false}/>);
+    const dropdownViews = ['Current', 'Organizers', 'Partners'].map((view, index) => <ViewButton key={index} view={view} currentView={this.state.view} toggleView={this.toggleView} dropdown={false}/>)
     return (
       <Router>
         <div className="app">
@@ -52,17 +53,21 @@ class App extends Component {
                 <Link to="/">
                   <img src={currentLogo} onClick={this.bringHome} className="app-logo main" alt="logo" />
                 </Link>
-                <div className="button-container">{viewButtons}</div>
+                <div className="button-container">
+                  <ViewButton view="About" currentView={this.state.view} toggleView={this.toggleView} dropdown={true} dropdownViews={dropdownViews}/>
+                  {viewButtons}
+                </div>
               </div>
             </div>
             <div className="content-container">
               <Route exact path="/" component={Home}/>
               <Route exact path="/about" component={About}/>
-              <Route exact path="/artists" component={Artists}/>
+              <Route exact path="/current" component={Current}/>
               <Route exact path="/organizers" component={Organizers}/>
-              <Route exact path="/collaborators" component={Collaborators}/>
-              <Route exact path="/workshops" component={Workshops}/>
-              <Route exact path="/panels" component={Panels}/>
+              <Route exact path="/partners" component={Partners}/>
+              <Route exact path="/artists" component={Artists}/>
+              <Route exact path="/panels+workshops" component={PanelsWorkshops}/>
+              <Route exact path="/volunteers" component={Volunteers}/>
               <Route exact path="/contact" component={Contact}/>
             </div>
           </div>
@@ -79,6 +84,8 @@ class ViewButton extends Component {
     super(props);
     this.state = {active: this.props.currentView === this.props.view ? true : false};
     this.handleClick = this.handleClick.bind(this);
+    this.onMouseEnter = this.onMouseEnter.bind(this);
+    this.onMouseLeave = this.onMouseLeave.bind(this);
   }
   componentWillReceiveProps(nextProps) {
     this.setState({active: nextProps.currentView === this.props.view ? true : false});
@@ -86,13 +93,40 @@ class ViewButton extends Component {
   handleClick() {
     this.props.toggleView(this.props.view)
   }
+  onMouseEnter() {
+    this.setState({hover: true});
+  }
+  onMouseLeave() {
+    this.setState({hover: false});
+  }
+  render() {
+    const dropdown = this.props.dropdown ? <DropdownMenu hover={this.state.hover} dropdownViews={this.props.dropdownViews}/> : null
+    return (
+      <div className="view-button-container" onMouseEnter={this.onMouseEnter} onMouseLeave={this.onMouseLeave}>
+        <Link to={'/' + this.props.view.replace(/\s/g,'').toLowerCase()} className='view-link'>
+          <div className={this.state.active ? "view-button active-button" : "view-button"} onClick={this.handleClick} >
+            {this.props.view}
+          </div>
+        </Link>
+        {dropdown}
+      </div>
+    );
+  }
+}
+
+class DropdownMenu extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {active: false};
+  }
+  componentWillReceiveProps(nextProps) {
+    this.setState({active: nextProps.hover});
+  }
   render() {
     return (
-      <Link to={'/' + this.props.view.toLowerCase()} className='view-link'>
-        <div className={this.state.active ? "view-button active-button" : "view-button"} onClick={this.handleClick}>
-          {this.props.view}
-        </div>
-      </Link>
+      <div className={this.state.active ? "dropdown active" : "dropdown"}>
+        {this.props.dropdownViews}
+      </div>
     );
   }
 }
@@ -172,7 +206,9 @@ class EmailForm extends Component {
   }
 }
 
+
 // views
+// 1
 class Home extends Component {
   render() {
     return (
@@ -180,11 +216,12 @@ class Home extends Component {
     );
   }
 }
+// 2
 class About extends Component {
   render() {
     return (
       <div>
-      <h1>About</h1>
+        <h1>About</h1>
         <p>CURRENT is a multidisciplinary, intersectional, music and electronic art festival working with female identified and non-binary artists in Vancouver and the Pacific Northwest. This 3-day, multi-venue, music and arts showcase featuring events, panels, youth mentorships, and workshops will take place July 28-30, 2017. We are offering public, free and all ages panels and workshops. Panels include: “Event Planning: Mobilizing Femme Artists and better Allyship” and “Intergenerational Knowledge Sharing in the Electronic Arts”. Workshops include “Intro to Modular Synthesis with Women’s Beat League” and “Intersessions: DJ Workshop”. These workshops and panels will be broadcasted live and made available online.</p>
         <p>A key focus of the project is to cultivate growth within the local community through building cross border relations, allowing young local artists to connect with music collectives and artists from outside of Canada with the intention of increasing global opportunities for local artists. In order to achieve this, on top of our focus on artists within the Vancouver community including a strong presence from Vancouver based collective Genero and local DJ education facilitators “Intersessions”, we intend to involve some artists and educators from two femme/non-binary artist collectives outside of Vancouver: “TUF” a Seattle collective with a strong multidisciplinary focus within the digital realms and “Women’s Beat League” in Portland who actively facilitates education and performance with a focus on Modular Synthesis. Although the focus of the project is on showcasing and creating opportunities for Vancouver artists we feel that it is important and enriching for those local artists to connect and learn from artists both from and outside of their local community.</p>
         <p>To assist with our commitment to encourage youth involvement in the events,  part of our strategy focuses around working with Facilitators at SFU, Emily Carr, UBC and Nimbus to promote student participation within the events through both workshops and volunteer opportunities.</p>
@@ -192,6 +229,31 @@ class About extends Component {
     );
   }
 }
+// 3
+class Current extends Component {
+  render() {
+    return (
+      <p>CURRENT is a multidisciplinary, intersectional, music and electronic art symposium working with femme-identified and non-binary artists in Vancouver and the Pacific Northwest. This 3-day, multi-venue, music and arts showcase featuring events, panels, youth mentorships, and workshops will take place on the weekend of July 28-30th. We are offering public, all ages, panels and workshops alongside evening events showcasing femme-identified and non-binary producers and DJs residing in the Pacific Northwest. CURRENT is both a platform to showcase local talent and an opportunity for electronic artists to connect and learn from one another.</p>
+    );
+  }
+}
+// 4
+class Organizers extends Component {
+  render() {
+    return (
+      <h1>Organizers</h1>
+    );
+  }
+}
+// 5
+class Partners extends Component {
+  render() {
+    return (
+      <h1>Partners</h1>
+    );
+  }
+}
+// 6
 class Artists extends Component {
   render() {
     return (
@@ -202,21 +264,16 @@ class Artists extends Component {
     );
   }
 }
-class Organizers extends Component {
+// 7
+class Volunteers extends Component {
   render() {
     return (
-      <h1>Organizers</h1>
+      <h1>Volunteers</h1>
     );
   }
 }
-class Collaborators extends Component {
-  render() {
-    return (
-      <h1>Collaborators</h1>
-    );
-  }
-}
-class Workshops extends Component {
+// 8
+class PanelsWorkshops extends Component {
   render() {
     return (
       <div>
@@ -231,13 +288,7 @@ class Workshops extends Component {
     );
   }
 }
-class Panels extends Component {
-  render() {
-    return (
-      <h1>Panels</h1>
-    );
-  }
-}
+// 9
 class Contact extends Component {
   render() {
     return (
