@@ -4,11 +4,10 @@ import {
   Route,
   Link
 } from 'react-router-dom';
+import bgProcessing from './processing/bg.pde'
+import './App.css';
 import currentLogo from './images/current-logo.png';
 import solPhoto from './images/soledad_munoz.jpg';
-// import bgProcessing from './processing/background.pde'
-import headerProcessing from './processing/header.pde'
-import './App.css';
 
 class App extends Component {
   constructor(props) {
@@ -50,7 +49,7 @@ class App extends Component {
           <div className={this.state.inIntro === true ? "app-main" : "app-main fade-in"}>
             <div>
               <div className="app-header">
-                <Link to="/">
+                <Link to="/" className="logo-link">
                   <img src={currentLogo} onClick={this.bringHome} className="app-logo main" alt="logo" />
                 </Link>
                 <div className="button-container">
@@ -71,7 +70,7 @@ class App extends Component {
               <Route exact path="/contact" component={Contact}/>
             </div>
           </div>
-          <canvas className="processing-bg" data-processing-sources={headerProcessing} />
+          <canvas className="processing-bg" data-processing-sources={bgProcessing} />
         </div>
       </Router>
     );
@@ -82,7 +81,10 @@ class App extends Component {
 class ViewButton extends Component {
   constructor(props) {
     super(props);
-    this.state = {active: this.props.currentView === this.props.view ? true : false};
+    this.state = {
+      active: this.props.currentView === this.props.view ? true : false,
+      hover: false
+    };
     this.handleClick = this.handleClick.bind(this);
     this.onMouseEnter = this.onMouseEnter.bind(this);
     this.onMouseLeave = this.onMouseLeave.bind(this);

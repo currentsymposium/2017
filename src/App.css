@@ -1,5 +1,9 @@
 .app {
   text-align: center;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  /*background-color: grey;*/
 }
 
 .app-intro {
@@ -42,20 +46,16 @@
   transition: opacity 1s linear;
 }
 
-.app-header {
-  height: 150px;
-  padding: 10px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
 .app-logo.intro {
-  height: 400px;
+  width: 600px;
+  max-width: 90vw;
 }
 
 .app-logo.main {
-  height: 154px;
+  height: 150px;
+}
+a.logo-link {
+  height: 100%;
 }
 
 .button-container {
@@ -64,7 +64,9 @@
   flex-wrap: wrap;
   justify-content: space-around;
   align-items: center;
-  align-content: center;
+  align-content: space-around;
+  height: 100%;
+  padding-left: 20px;
 }
 
 .view-button-container {
@@ -113,9 +115,19 @@ a.view-link:visited {
   box-sizing: border-box;
 }
 
+.app-header {
+  height: 150px;
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
 .content-container {
-  padding: 20px;
-  height: calc(100vh - 150px - 20px - 40px);
+  margin-top: 10px;
+  margin-bottom: 20px;
+  margin-left: 20px;
+  margin-right: 20px;
+  height: calc(100vh - 150px - 20px - 30px);
   overflow-y: scroll;
   color: white;
   text-align: left;
@@ -124,4 +136,16 @@ a.view-link:visited {
 
 .artist-photo {
   height: 200px;
+}
+
+@media (max-width: 450px), orientation: landscape {
+  .app-logo.main {
+    height: 80px;
+  }
+  .app-header {
+    height: 80px;
+  }
+  .content-container {
+    height: calc(100vh - 80px - 20px - 30px);
+  }
 }
