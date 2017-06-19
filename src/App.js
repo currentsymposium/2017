@@ -8,6 +8,7 @@ import bgProcessing from './processing/bg.pde'
 import './App.css';
 import currentLogo from './images/current-logo.png';
 import solPhoto from './images/soledad_munoz.jpg';
+import organizersData from './json/organizers.json'
 
 class App extends Component {
   constructor(props) {
@@ -265,9 +266,23 @@ class Current extends Component {
 }
 // 4
 class Organizers extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      data: organizersData
+    };
+  }
+  componentDidMount() {
+    console.log(this.state.data, typeof(this.state.data))
+  }
   render() {
+    const organizerSpec = this.state.data.map((organizer, index) =>
+      <div>
+        {organizer.name} {organizer.bio}
+      </div>
+    );
     return (
-      <h1>Organizers</h1>
+      <div>{organizerSpec}</div>
     );
   }
 }
