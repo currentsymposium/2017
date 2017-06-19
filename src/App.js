@@ -6,7 +6,6 @@ import {
 } from 'react-router-dom';
 import bgProcessing from './processing/bg.pde'
 import './css/App.css';
-import currentLogo from './images/current-logo.png';
 import { Home, About, Current, Organizers, Partners, Artists, PanelsWorkshops, Contact } from './views.js';
 import {ViewButton} from './components.js'
 
@@ -59,12 +58,12 @@ class App extends Component {
       <Router>
         <div className="app">
           <div className={this.state.inIntro === true ? "app-intro": "app-intro fade-out"} onClick={this.toggleIntro} >
-            <img src={currentLogo} className="app-logo intro" alt="logo" />
+            <img src="https://s3.ca-central-1.amazonaws.com/current-symposium/current-logo.png" className="app-logo intro" alt="logo" />
           </div>
           <div className={this.state.inIntro === true ? "app-main" : "app-main fade-in"}>
             <div className="app-header" onClick={this.dummyEvent}>
               <Link to="/" className="logo-link">
-                <img src={currentLogo} onClick={this.bringHome} className="app-logo main" alt="logo" />
+                <img src="https://s3.ca-central-1.amazonaws.com/current-symposium/current-logo.png" onClick={this.bringHome} className="app-logo main" alt="logo" />
               </Link>
               <div className="button-container">
                 <ViewButton view="About" currentView={this.state.view} toggleView={this.toggleView} dropdown={true} dropdownViews={dropdownViews}/>
