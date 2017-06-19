@@ -12,14 +12,25 @@ import solPhoto from './images/soledad_munoz.jpg';
 class App extends Component {
   constructor(props) {
     super(props);
-    let viewPath = this.props.location.pathname.substr(1);
+    let path = this.props.location.pathname;
+    const viewState = this.routeViewParser(path);
     this.state = {
       inIntro: this.props.location.pathname === "/" ? true : false,
-      view: viewPath === "" ? "Home" : viewPath.charAt(0).toUpperCase() + viewPath.slice(1)
+      view: viewState
     };
     this.toggleIntro = this.toggleIntro.bind(this);
     this.toggleView = this.toggleView.bind(this);
     this.bringHome = this.bringHome.bind(this);
+  }
+  routeViewParser(routePath) {
+    let viewPath = routePath.substr(1);
+    if (viewPath === "") {
+      return "Home"
+    } else if (viewPath === "panels+workshops") {
+      return "Panels + Workshops"
+    } else {
+      return viewPath.charAt(0).toUpperCase() + viewPath.slice(1)
+    }
   }
   componentWillReceiveProps(nextProps) {
     let viewPath = nextProps.location.pathname.substr(1);
@@ -33,13 +44,16 @@ class App extends Component {
   toggleView(value) {
     this.setState({view: value, inIntro: false});
   }
+  dummyEvent() {
+    console.log('dummy event');
+  }
   bringHome() {
     this.setState({view: "Home"})
   }
   render() {
     const availableViews = ['Artists', 'Panels + Workshops', 'Volunteers', 'Contact'];
     const viewButtons = availableViews.map((view, index) => <ViewButton key={index} view={view} currentView={this.state.view} toggleView={this.toggleView} dropdown={false}/>);
-    const dropdownViews = ['Current', 'Organizers', 'Partners'].map((view, index) => <ViewButton key={index} view={view} currentView={this.state.view} toggleView={this.toggleView} dropdown={false}/>)
+    const dropdownViews = ['Current', 'Organizers', 'Partners'].map((view, index) => <ViewButton key={index} view={view} currentView={this.state.view} toggleView={this.toggleView} dropdown={false} childOfDrop={true}/>)
     return (
       <Router>
         <div className="app">
@@ -47,18 +61,16 @@ class App extends Component {
             <img src={currentLogo} className="app-logo intro" alt="logo" />
           </div>
           <div className={this.state.inIntro === true ? "app-main" : "app-main fade-in"}>
-            <div>
-              <div className="app-header">
-                <Link to="/" className="logo-link">
-                  <img src={currentLogo} onClick={this.bringHome} className="app-logo main" alt="logo" />
-                </Link>
-                <div className="button-container">
-                  <ViewButton view="About" currentView={this.state.view} toggleView={this.toggleView} dropdown={true} dropdownViews={dropdownViews}/>
-                  {viewButtons}
-                </div>
+            <div className="app-header" onClick={this.dummyEvent}>
+              <Link to="/" className="logo-link">
+                <img src={currentLogo} onClick={this.bringHome} className="app-logo main" alt="logo" />
+              </Link>
+              <div className="button-container">
+                <ViewButton view="About" currentView={this.state.view} toggleView={this.toggleView} dropdown={true} dropdownViews={dropdownViews}/>
+                {viewButtons}
               </div>
             </div>
-            <div className="content-container">
+            <div className="content-container" onClick={this.dummyEvent} onScroll={this.simClick}>
               <Route exact path="/" component={Home}/>
               <Route exact path="/about" component={About}/>
               <Route exact path="/current" component={Current}/>
@@ -88,12 +100,20 @@ class ViewButton extends Component {
     this.handleClick = this.handleClick.bind(this);
     this.onMouseEnter = this.onMouseEnter.bind(this);
     this.onMouseLeave = this.onMouseLeave.bind(this);
+    if (!this.props.childOfDrop) {
+      this.clearDrop = this.clearDrop.bind(this);
+    }
   }
   componentWillReceiveProps(nextProps) {
-    this.setState({active: nextProps.currentView === this.props.view ? true : false});
+    this.setState({
+      active: nextProps.currentView === this.props.view ? true : false
+    });
   }
   handleClick() {
-    this.props.toggleView(this.props.view)
+    this.props.toggleView(this.props.view);
+  }
+  clearDrop() {
+    this.setState({hover: false});
   }
   onMouseEnter() {
     this.setState({hover: true});
@@ -102,7 +122,7 @@ class ViewButton extends Component {
     this.setState({hover: false});
   }
   render() {
-    const dropdown = this.props.dropdown ? <DropdownMenu hover={this.state.hover} dropdownViews={this.props.dropdownViews}/> : null
+    const dropdown = this.props.dropdown && this.props.dropdownViews ? <DropdownMenu hover={this.state.hover} dropdownViews={this.props.dropdownViews} clearDrop={this.clearDrop}/> : null
     return (
       <div className="view-button-container" onMouseEnter={this.onMouseEnter} onMouseLeave={this.onMouseLeave}>
         <Link to={'/' + this.props.view.replace(/\s/g,'').toLowerCase()} className='view-link'>
@@ -126,7 +146,7 @@ class DropdownMenu extends Component {
   }
   render() {
     return (
-      <div className={this.state.active ? "dropdown active" : "dropdown"}>
+      <div className={this.state.active ? "dropdown active" : "dropdown"} onClick={this.props.clearDrop}>
         {this.props.dropdownViews}
       </div>
     );
@@ -235,7 +255,11 @@ class About extends Component {
 class Current extends Component {
   render() {
     return (
-      <p>CURRENT is a multidisciplinary, intersectional, music and electronic art symposium working with femme-identified and non-binary artists in Vancouver and the Pacific Northwest. This 3-day, multi-venue, music and arts showcase featuring events, panels, youth mentorships, and workshops will take place on the weekend of July 28-30th. We are offering public, all ages, panels and workshops alongside evening events showcasing femme-identified and non-binary producers and DJs residing in the Pacific Northwest. CURRENT is both a platform to showcase local talent and an opportunity for electronic artists to connect and learn from one another.</p>
+      <div>
+        <p>CURRENT is a multidisciplinary, intersectional, music and electronic art symposium working with femme-identified and non-binary artists in Vancouver and the Pacific Northwest. This 3-day, multi-venue, music and arts showcase featuring events, panels, youth mentorships, and workshops will take place on the weekend of July 28-30th. We are offering public, all ages, panels and workshops alongside evening events showcasing femme-identified and non-binary producers and DJs residing in the Pacific Northwest. CURRENT is both a platform to showcase local talent and an opportunity for electronic artists to connect and learn from one another.</p>
+        <p>CURRENT is a multidisciplinary, intersectional, music and electronic art symposium working with femme-identified and non-binary artists in Vancouver and the Pacific Northwest. This 3-day, multi-venue, music and arts showcase featuring events, panels, youth mentorships, and workshops will take place on the weekend of July 28-30th. We are offering public, all ages, panels and workshops alongside evening events showcasing femme-identified and non-binary producers and DJs residing in the Pacific Northwest. CURRENT is both a platform to showcase local talent and an opportunity for electronic artists to connect and learn from one another.</p>
+        <p>CURRENT is a multidisciplinary, intersectional, music and electronic art symposium working with femme-identified and non-binary artists in Vancouver and the Pacific Northwest. This 3-day, multi-venue, music and arts showcase featuring events, panels, youth mentorships, and workshops will take place on the weekend of July 28-30th. We are offering public, all ages, panels and workshops alongside evening events showcasing femme-identified and non-binary producers and DJs residing in the Pacific Northwest. CURRENT is both a platform to showcase local talent and an opportunity for electronic artists to connect and learn from one another.</p>
+      </div>
     );
   }
 }
