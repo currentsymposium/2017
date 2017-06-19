@@ -84,6 +84,7 @@ a.view-link:visited {
 }
 .view-button {
   display: inline-block;
+  font-size: x-large;
 }
 .active-button {
   /*background-color: #4286f4;*/
@@ -131,6 +132,10 @@ a.view-link:visited {
   overflow-y: scroll;
   color: white;
   text-align: left;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  align-content: center;
   /*background-color: lightgrey;*/
 }
 

@@ -18,7 +18,9 @@ class About extends Component {
     return (
       <div>
         <Current />
+        <h2>Organizers</h2>
         <Organizers />
+        <h2>Partners</h2>
         <Partners />
       </div>
     );
