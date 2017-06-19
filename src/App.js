@@ -46,13 +46,13 @@ class App extends Component {
     this.setState({view: value, inIntro: false});
   }
   dummyEvent() {
-    console.log('dummy event');
+
   }
   bringHome() {
     this.setState({view: "Home"})
   }
   render() {
-    const availableViews = ['Artists', 'Panels + Workshops', 'Volunteers', 'Contact'];
+    const availableViews = ['Artists', 'Panels + Workshops', 'Contact'];
     const viewButtons = availableViews.map((view, index) => <ViewButton key={index} view={view} currentView={this.state.view} toggleView={this.toggleView} dropdown={false}/>);
     const dropdownViews = ['Current', 'Organizers', 'Partners'].map((view, index) => <ViewButton key={index} view={view} currentView={this.state.view} toggleView={this.toggleView} dropdown={false} childOfDrop={true}/>)
     return (
@@ -79,7 +79,6 @@ class App extends Component {
               <Route exact path="/partners" component={Partners}/>
               <Route exact path="/artists" component={Artists}/>
               <Route exact path="/panels+workshops" component={PanelsWorkshops}/>
-              <Route exact path="/volunteers" component={Volunteers}/>
               <Route exact path="/contact" component={Contact}/>
             </div>
           </div>

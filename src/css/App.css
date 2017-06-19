@@ -139,8 +139,82 @@ a.view-link:visited {
   /*background-color: lightgrey;*/
 }
 
-.artist-photo {
-  height: 200px;
+.organizer-spec {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 15px;
+}
+.organizer-photo {
+  width: 120px;
+  align-self: flex-start;
+}
+.organizer-description {
+  margin-left: 20px;
+  color: rgb(235,235,235);
+}
+.organizer-name {
+  font-weight: bolder;
+  color: white;
+  /*font-style: italic;*/
+  font-size: 1.05em;
+}
+
+.partner-spec {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 15px;
+}
+.partner-logo {
+  width: 120px;
+  align-self: flex-start;
+}
+.partner-description {
+  margin-left: 20px;
+  color: rgb(235,235,235);
+}
+.partner-name {
+  font-weight: bolder;
+  color: white;
+  /*font-style: italic;*/
+  font-size: 1.05em;
+}
+
+.about-container {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  position: relative;
+}
+.about-child {
+  padding-left: 40px;
+  padding-right: 40px;
+  font-size: x-large;
+  align-self: center;
+  position:absolute;
+  top: 0px;
+  left: 0px;
+  min-height: 100%;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.panels-workshops-container {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  /*flex-direction: column;*/
+}
+.panel-workshop-child {
+
+}
+.panel-workshop-header {
+  text-decoration: underline;
 }
 
 @media (max-width: 450px), orientation: landscape {
@@ -152,5 +226,32 @@ a.view-link:visited {
   }
   .content-container {
     height: calc(100vh - 80px - 20px - 30px);
+  }
+  .view-button {
+    font-size: large;
+  }
+  .organizer-spec {
+    margin-top: 0px;
+    margin-left: 0px;
+    margin-right: 0px;
+    margin-bottom: 20px;
+    align-items: flex-start;
+  }
+  .organizer-photo {
+    width: 100px;
+  }
+  .partner-spec {
+    margin-top: 0px;
+    margin-left: 0px;
+    margin-right: 0px;
+    margin-bottom: 20px;
+    align-items: flex-start;
+  }
+  .partner-logo {
+    width: 100px;
+  }
+  .about-child {
+    padding-left: 0px;
+    padding-right: 0px;
   }
 }

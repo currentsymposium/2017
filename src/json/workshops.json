@@ -1,18 +1,20 @@
-"workshops": [{
-  "name": "Atari Punk Console Building and Sonic Pi",
-  "hosts": ["Kiran Bhumber", "Norah Lorway"],
-  "description": "In this joint workshop, participants will learn a variety of electronic music synthesis techniques, both hands-on with hardware and software implementation.<br>The Atari Punk Console is a classic synthesizer for DIY synth makers and circuit benders. In this workshop, participants will learn the basics of circuitry, electronics, and soldering. At the end of the workshop, participants will have their own synthesizer built from scratch which they can take home.<br>Sonic Pi is an audio programming language intended for all users. This open-source software is powerful for audio synthesis and live-coding performance. In this workshop, participants will learn the basics of synthesis using code, as well as live coding performance practice."
-}, {
-  "name": "Intersessions",
-  "hosts": "",
-  "description": "More info soon"
-}],
-"panels": [{
-  "name": "Event Planning: Mobilizing Female-Identified & Non-Binary Artists and Better Allyship",
-  "hosts": [""],
-  "description": "How can we support female/non-binary artists in our community? How can we create more inclusive spaces and lineups for works to be presented? What are some common challenges we face trying to produce events and how can we overcome them? How can men, or folks in position of influence be better allies? How can men engage with femme-lead initiatives in a supportive manner?"
-}, {
-  "name": "Intergenerational Knowledge Sharing in the Electronic Arts & Technology",
-  "hosts": [""],
-  "description": "How do we facilitate better intergenerational mentorship for female/non-binary electronic artists? What are some advice established artists can provide to emerging artists to overcome personal, mental and social barriers?  Why is it important to be educated on feminist histories in electronic art?"
-}]
+{
+	"workshops": [{
+		"name": "Atari Punk Console Building and Sonic Pi",
+		"hosts": ["Kiran Bhumber", "Norah Lorway"],
+		"description": ["In this joint workshop, participants will learn a variety of electronic music synthesis techniques, both hands-on with hardware and software implementation.", "The Atari Punk Console is a classic synthesizer for DIY synth makers and circuit benders. In this workshop, participants will learn the basics of circuitry, electronics, and soldering. At the end of the workshop, participants will have their own synthesizer built from scratch which they can take home.", "Sonic Pi is an audio programming language intended for all users. This open-source software is powerful for audio synthesis and live-coding performance. In this workshop, participants will learn the basics of synthesis using code, as well as live coding performance practice."]
+	}, {
+		"name": "Intersessions",
+		"hosts": [],
+		"description": ["More info soon"]
+	}],
+	"panels": [{
+		"name": "Event Planning: Mobilizing Female-Identified & Non-Binary Artists and Better Allyship",
+		"hosts": [],
+		"description": ["How can we support female/non-binary artists in our community? How can we create more inclusive spaces and lineups for works to be presented? What are some common challenges we face trying to produce events and how can we overcome them? How can men, or folks in position of influence be better allies? How can men engage with femme-lead initiatives in a supportive manner?"]
+	}, {
+		"name": "Intergenerational Knowledge Sharing in the Electronic Arts & Technology",
+		"hosts": [],
+		"description": ["How do we facilitate better intergenerational mentorship for female/non-binary electronic artists? What are some advice established artists can provide to emerging artists to overcome personal, mental and social barriers?  Why is it important to be educated on feminist histories in electronic art?"]
+	}]
+}

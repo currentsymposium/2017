@@ -1,30 +1,31 @@
-{
-  "name": "Genero",
-  "website_url": "",
-  "logo_url": "",
-  "description": "Genero is a Vancouver based record label and artist collective. Founded by Soledad Munoz the collective was created out of necessity to create a visible space for women within the sound realm, where they can both connect and grow."
-},
-{
-  "name": "Intersessions",
-  "website_url": "",
-  "logo_url": "",
-  "description": "DJ and sound focused workshops for women, and those within the LGBTQ2IA+ spectrum. The workshop series of artist run seminars aims to address the significant gender and sexuality based imbalance within the music industry."
-},
-{
-  "name": "TUF",
-  "website_url": "",
-  "logo_url": "",
-  "description": "TUF is an intersectional female/non-binary/trans collective with headquarters in Seattle and a strong presence in digital realms.TUF members include promoters, curators, installation/visual artists, DJ’s, producers, sound engineers, writers, dancers, and designers."
-},
-{
-  "name": "VAL",
-  "website_url": "",
-  "logo_url": "",
-  "description": "The Vancouver Art and Leisure Society (VAL) is a radical artist run organization devoted to presentation, programming, and advocacy of art and leisure in unconventional spaces and ways in Vancouver. We present professional projects and happenings to the public with no discrimination in terms of artistic intent or discipline. We promote all realms of artistic, sexual and political expression both personal and external. We believe in growing artists of all disciplines through the highest caliber of programming possible."
-},
-{
-  "name": "Women’s Beat League",
-  "website_url": "",
-  "logo_url": "",
-  "description": "Women’s Beat League is a Portland, Oregon collective hosting workshops, lectures, and parties focused on representing the female-identified and nonbinary views in electronic music."
-},
+[	{
+		"name": "The Vancouver Art and Leisure Society",
+		"website_url": "",
+		"logo_url": "https://s3.ca-central-1.amazonaws.com/current-symposium/partners/valweb1.png",
+		"description": "(VAL) is a radical artist run organization devoted to presentation, programming, and advocacy of art and leisure in unconventional spaces and ways in Vancouver. We present professional projects and happenings to the public with no discrimination in terms of artistic intent or discipline. We promote all realms of artistic, sexual and political expression both personal and external. We believe in growing artists of all disciplines through the highest caliber of programming possible."
+	},
+  {
+		"name": "Genero",
+		"website_url": "",
+		"logo_url": "https://s3.ca-central-1.amazonaws.com/current-symposium/partners/generoweb1.png",
+		"description": "is a Vancouver based record label and artist collective. Founded by Soledad Munoz the collective was created out of necessity to create a visible space for women within the sound realm, where they can both connect and grow."
+	},
+	{
+		"name": "Intersessions",
+		"website_url": "",
+		"logo_url": "https://s3.ca-central-1.amazonaws.com/current-symposium/partners/intersessionweb1.png",
+		"description": "is a DJ and sound focused workshop for women, and those within the LGBTQ2IA+ spectrum. The workshop series of artist-run seminars aims to address the significant gender and sexuality based imbalance within the music industry."
+	},
+	{
+		"name": "TUF",
+		"website_url": "",
+		"logo_url": "https://s3.ca-central-1.amazonaws.com/current-symposium/partners/tufweb1.png",
+		"description": "is an intersectional female/non-binary/trans collective with headquarters in Seattle and a strong presence in digital realms.TUF members include promoters, curators, installation/visual artists, DJ’s, producers, sound engineers, writers, dancers, and designers."
+	},
+	{
+		"name": "Women’s Beat League",
+		"website_url": "",
+		"logo_url": "https://s3.ca-central-1.amazonaws.com/current-symposium/partners/WBLweb1.png",
+		"description": "is a Portland, Oregon collective hosting workshops, lectures, and parties focused on representing the female-identified and nonbinary views in electronic music."
+	}
+]

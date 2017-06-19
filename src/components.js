@@ -21,6 +21,9 @@ class ViewButton extends Component {
     this.setState({
       active: nextProps.currentView === this.props.view ? true : false
     });
+    if (nextProps.currentView === this.props.view && nextProps.currentView === "About") {
+      this.setState({hover: false});
+    }
   }
   handleClick() {
     this.props.toggleView(this.props.view);
@@ -115,7 +118,7 @@ class EmailForm extends Component {
     //     formData[key] = this.state[key];
     //   }
     // });
-    fetch(`https://formspree.io/mattasaminew@gmail.com`, {
+    fetch(`https://formspree.io/currentsymposium@gmail.com`, {
         method: 'POST',
         body: JSON.stringify(formData),
         headers: {
@@ -127,6 +130,7 @@ class EmailForm extends Component {
     this.clearState();
   }
   render() {
+    // TODO Add a "I want to volunteer" field to form
     return (
       <form onSubmit={this.handleSubmit}>
         <input type="text" name="name" placeholder="Your name" value={this.state.name} onChange={this.handleInputChange} /><br/>
@@ -141,4 +145,4 @@ class EmailForm extends Component {
   }
 }
 
-export {ViewButton, DropdownMenu, EmailForm} 
+export {ViewButton, DropdownMenu, EmailForm}
