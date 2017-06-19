@@ -60,7 +60,7 @@ class Organizers extends Component {
   render() {
     const organizerSpecs = this.state.data.map((organizer, index) =>
       <div key={index} className="organizer-spec">
-      <img src={organizer.photo_url} className="organizer-photo"/>
+      <img src={organizer.photo_url} className="organizer-photo" alt="organizers"/>
         <div className="organizer-description">
           <span className="organizer-name">{organizer.name}</span> {organizer.description}
         </div>
@@ -83,7 +83,7 @@ class Partners extends Component {
   render() {
     const partnerSpecs = this.state.data.map((partner, index) =>
       <div key={index} className="partner-spec">
-        <img src={partner.logo_url} className="partner-logo"/>
+        <img src={partner.logo_url} className="partner-logo" alt="partner logo"/>
         <div className="partner-description">
           <span className="partner-name">{partner.name}</span> {partner.description}
         </div>
@@ -137,7 +137,7 @@ class PanelsWorkshops extends Component {
       <div key={index}>
         <h2>{panel.name}</h2>
         <h3>{panel.hosts.length === 0 ? "TBA" : panel.hosts.join(', ')}</h3>
-        {panel.description.map((para, index) => <p>{para}</p>)}
+        {panel.description.map((para, index) => <p key={index}>{para}</p>)}
       </div>
     );
     return (

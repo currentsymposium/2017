@@ -7,7 +7,7 @@ import {
 import bgProcessing from './processing/bg.pde'
 import './css/App.css';
 import currentLogo from './images/current-logo.png';
-import { Home, About, Current, Organizers, Partners, Artists, PanelsWorkshops, Volunteers, Contact } from './views.js';
+import { Home, About, Current, Organizers, Partners, Artists, PanelsWorkshops, Contact } from './views.js';
 import {ViewButton} from './components.js'
 
 class App extends Component {
