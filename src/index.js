@@ -5,8 +5,8 @@ import {
   BrowserRouter as Router,
   Route
 } from 'react-router-dom'
-import registerServiceWorker from './registerServiceWorker';
-import './index.css';
+import registerServiceWorker from './tasks/registerServiceWorker';
+import './css/index.css';
 import 'processing-js'
 
 class Index extends Component {
