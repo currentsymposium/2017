@@ -5,7 +5,6 @@ import organizerData from './json/organizers.json'
 import partnerData from './json/partners.json'
 import workshopData from './json/workshops.json'
 import participantData from './json/participants.json'
-import participantsProcessing from './processing/participants.pde'
 
 // 1
 class Home extends Component {
@@ -105,7 +104,7 @@ class Partners extends Component {
       </div>
     );
     return (
-      <div>
+      <div className="partner-container">
         {partnerSpecs}
       </div>
     );
@@ -144,14 +143,14 @@ class PanelsWorkshops extends Component {
   }
   render() {
     const workshops = this.state.data.workshops.map((workshop, index) =>
-      <div key={index}>
+      <div key={index} className="workshop-spec">
         <h2>{workshop.name}</h2>
         <h3>{workshop.hosts.length === 0 ? "TBA" : workshop.hosts.join(', ')}</h3>
         {workshop.description.map((para, index) => <p key={index}>{para}</p>)}
       </div>
     );
     const panels = this.state.data.panels.map((panel, index) =>
-      <div key={index}>
+      <div key={index} className="panel-spec">
         <h2>{panel.name}</h2>
         <h3>{panel.hosts.length === 0 ? "TBA" : panel.hosts.join(', ')}</h3>
         {panel.description.map((para, index) => <p key={index}>{para}</p>)}
@@ -159,13 +158,17 @@ class PanelsWorkshops extends Component {
     );
     return (
       <div className="panels-workshops-container">
-        <div className="panel-workshop-child">
-          <h1 className="panel-workshop-header">Panels</h1>
-          {panels}
+        <div className="panel-child">
+          <h1 className="panel-header">Panels</h1>
+          <div className="panel-spec-container">
+            {panels}
+          </div>
         </div>
-        <div className="panel-workshop-child">
-          <h1 className="panel-workshop-header">Workshops</h1>
-          {workshops}
+        <div className="workshop-child">
+          <h1 className="workshop-header">Workshops</h1>
+          <div className="workshop-spec-container">
+            {workshops}
+          </div>
         </div>
       </div>
     );
