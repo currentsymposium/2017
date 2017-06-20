@@ -6,7 +6,7 @@ import {
 } from 'react-router-dom';
 import bgProcessing from './processing/bg.pde'
 import './css/App.css';
-import { Home, About, Current, Organizers, Partners, Artists, PanelsWorkshops, Contact } from './views.js';
+import { Home, About, Current, Organizers, Partners, Participants, PanelsWorkshops, Contact } from './views.js';
 import {ViewButton} from './components.js'
 
 class App extends Component {
@@ -51,7 +51,7 @@ class App extends Component {
     this.setState({view: "Home"})
   }
   render() {
-    const availableViews = ['Artists', 'Panels + Workshops', 'Contact'];
+    const availableViews = ['Participants', 'Panels + Workshops', 'Contact'];
     const viewButtons = availableViews.map((view, index) => <ViewButton key={index} view={view} currentView={this.state.view} toggleView={this.toggleView} dropdown={false}/>);
     const dropdownViews = ['Current', 'Organizers', 'Partners'].map((view, index) => <ViewButton key={index} view={view} currentView={this.state.view} toggleView={this.toggleView} dropdown={false} childOfDrop={true}/>)
     return (
@@ -70,13 +70,13 @@ class App extends Component {
                 {viewButtons}
               </div>
             </div>
-            <div className="content-container" onClick={this.dummyEvent} onScroll={this.simClick}>
+            <div className={this.state.view === "Home" ? "content-container remove-background" : "content-container"} onClick={this.dummyEvent} onScroll={this.simClick}>
               <Route exact path="/" component={Home}/>
               <Route exact path="/about" component={About}/>
               <Route exact path="/current" component={Current}/>
               <Route exact path="/organizers" component={Organizers}/>
               <Route exact path="/partners" component={Partners}/>
-              <Route exact path="/artists" component={Artists}/>
+              <Route exact path="/participants" component={Participants}/>
               <Route exact path="/panels+workshops" component={PanelsWorkshops}/>
               <Route exact path="/contact" component={Contact}/>
             </div>

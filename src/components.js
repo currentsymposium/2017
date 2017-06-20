@@ -43,7 +43,7 @@ class ViewButton extends Component {
       <div className="view-button-container" onMouseEnter={this.onMouseEnter} onMouseLeave={this.onMouseLeave}>
         <Link to={'/' + this.props.view.replace(/\s/g,'').toLowerCase()} className='view-link'>
           <div className={this.state.active ? "view-button active-button" : "view-button"} onClick={this.handleClick} >
-            {this.props.view}
+            {this.props.view.toUpperCase()}
           </div>
         </Link>
         {dropdown}
@@ -74,10 +74,12 @@ class EmailForm extends Component {
     super(props);
     this.state = {
       _gotcha: "",
+      _format: "plain",
       email: "",
       name: "",
       _subject: "",
-      message: ""
+      message: "",
+      volunteer: false,
     };
     this.handleInputChange = this.handleInputChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -86,38 +88,37 @@ class EmailForm extends Component {
   clearState() {
     this.setState({
       _gotcha: "",
-      email: "",
+      _format: "plain",
       name: "",
+      email: "",
       _subject: "",
-      message: ""
+      message: "",
+      volunteer: false
     });
   }
   handleInputChange(event) {
     const target = event.target;
-    const value = target.value;
+    const value = target.type === 'checkbox' ? target.checked : target.value;
     const name = target.name;
 
     this.setState({
       [name]: value
     });
   }
+  emailFormSorter(data) {
+    var formData = {}
+    const keys = ["_gotcha", "_format", "name", "email", "_subject", "message", "volunteer"];
+    keys.forEach(function(key) {
+      if (data[key] !== "") {
+        formData[key] = data[key];
+      }
+    });
+    return formData
+  }
   handleSubmit(event) {
     event.preventDefault();
-    var formData = {};
-    for (var key in this.state) {
-      if (this.state[key] !== "") {
-        formData[key] = this.state[key];
-      }
-    }
-    formData["_format"] = "plain";
+    let formData = this.emailFormSorter(this.state)
 
-    // TODO fix this so that it sends email fields in appropriate order
-    // let keys = Object.keys(this.state);
-    // keys.forEach(function(key) {
-    //   if (this.state[key] !== "") {
-    //     formData[key] = this.state[key];
-    //   }
-    // });
     fetch(`https://formspree.io/currentsymposium@gmail.com`, {
         method: 'POST',
         body: JSON.stringify(formData),
@@ -127,19 +128,21 @@ class EmailForm extends Component {
     .then( response => response.json() )
     .then( json => console.log(json) )
     .catch( error => console.log(error) );
+
     this.clearState();
   }
   render() {
     // TODO Add a "I want to volunteer" field to form
     return (
-      <form onSubmit={this.handleSubmit}>
-        <input type="text" name="name" placeholder="Your name" value={this.state.name} onChange={this.handleInputChange} /><br/>
-        <input type="email" name="email" placeholder="Your email" value={this.state.email} onChange={this.handleInputChange} /><br/>
-        <input type="text" name="_subject" placeholder="Your subject" value={this.state._subject} onChange={this.handleInputChange} /><br/>
-        <textarea name="message" placeholder="Your message" value={this.state.message} onChange={this.handleInputChange} /><br/>
+      <form className="email-form" onSubmit={this.handleSubmit}>
+        <input className="form-input" type="text" name="name" placeholder="Your name" value={this.state.name} onChange={this.handleInputChange} />
+        <input className="form-input" type="email" name="email" placeholder="Your email" value={this.state.email} onChange={this.handleInputChange} />
+        <input className="form-input" type="text" name="_subject" placeholder="Your subject" value={this.state._subject} onChange={this.handleInputChange} />
+        <textarea className="form-text" name="message" placeholder="Your message" value={this.state.message} onChange={this.handleInputChange} />
+        <label className="volunteer-label"><input className="form-check" type="checkbox" name="volunteer" checked={this.state.volunteer} onChange={this.handleInputChange}/><span>&nbsp;I would like to volunteer for CURRENT</span></label>
         <input type="text" name="_gotcha" value={this.state._gotcha} onChange={this.handleInputChange} style={{display: "none"}} />
         <input type="hidden" name="_format" value="plain" onChange={this.handleInputChange} />
-        <input type="submit" value="Send" />
+        <input className="form-button" type="submit" value="Send" />
       </form>
     );
   }

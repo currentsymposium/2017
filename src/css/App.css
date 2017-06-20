@@ -136,14 +136,32 @@ a.view-link:visited {
   flex-direction: column;
   align-items: center;
   align-content: center;
-  /*background-color: lightgrey;*/
+  background-color: rgba(0, 0, 0, 0.5);
+}
+.remove-background {
+  background-color: transparent;
 }
 
+.about-container {
+  padding: 20px;
+  width: calc(100% - 40px);
+}
+
+.organizer-container {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  /*flex-direction: column;*/
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: center;
+}
 .organizer-spec {
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin: 15px;
+  align-self: center;
 }
 .organizer-photo {
   width: 120px;
@@ -181,7 +199,7 @@ a.view-link:visited {
   font-size: 1.05em;
 }
 
-.about-container {
+.current-container {
   height: 100%;
   width: 100%;
   display: flex;
@@ -189,10 +207,9 @@ a.view-link:visited {
   align-items: center;
   position: relative;
 }
-.about-child {
-  padding-left: 40px;
-  padding-right: 40px;
-  font-size: x-large;
+.current-child {
+  padding: 40px;
+  font-size: large;
   align-self: center;
   position:absolute;
   top: 0px;
@@ -217,6 +234,76 @@ a.view-link:visited {
   text-decoration: underline;
 }
 
+.participant-container {
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  height: 100%;
+  width: 100%;
+}
+.processing-participants {
+  align-self: center;
+  width: calc(100% - 30px);
+  margin: 15px;
+}
+.participant-spec {
+  align-self: center;
+  margin: 10px;
+}
+
+.contact-container {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+.email-form {
+  align-self: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.email-form :nth-child(n) {
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+.form-input {
+  width: calc(100% - 10px);
+}
+.form-text {
+  width: calc(100% - 10px);
+  height: 25vh;
+  resize: none;
+}
+.form-button {
+}
+.volunteer-label {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.home-container {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;;
+  align-items: center;
+}
+.home-poster-container {
+  text-align: center;
+}
+.home-poster {
+  width: 100%;
+  opacity: 0.2;
+  transition: opacity 1s linear;
+}
+.home-poster:hover {
+  opacity: 1;
+}
+
 @media (max-width: 450px), orientation: landscape {
   .app-logo.main {
     height: 80px;
@@ -229,13 +316,6 @@ a.view-link:visited {
   }
   .view-button {
     font-size: large;
-  }
-  .organizer-spec {
-    margin-top: 0px;
-    margin-left: 0px;
-    margin-right: 0px;
-    margin-bottom: 20px;
-    align-items: flex-start;
   }
   .organizer-photo {
     width: 100px;
@@ -250,7 +330,7 @@ a.view-link:visited {
   .partner-logo {
     width: 100px;
   }
-  .about-child {
+  .current-child {
     padding-left: 0px;
     padding-right: 0px;
   }

@@ -5,7 +5,7 @@ void setup() {
   size(800, 600);
   background(40,40,130);
   stroke(250);
-  strokeWeight(.4);
+  strokeWeight(0.4);
   float x = 0;
   float theta = 0;
   for (int i = 0; i < Elem.length; i++) {
@@ -39,6 +39,6 @@ class ExLine {
 
     y3 = y2 - map(sin(theta), -1, 2, 0, 1) * rad;
 
-    theta += .005;
+    theta += 0.005;
   }
 }

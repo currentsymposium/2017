@@ -1,14 +1,21 @@
 import React, { Component } from 'react';
 import {EmailForm} from './components.js'
+import aboutData from './json/about.json'
 import organizerData from './json/organizers.json'
 import partnerData from './json/partners.json'
 import workshopData from './json/workshops.json'
+import participantData from './json/participants.json'
+import participantsProcessing from './processing/participants.pde'
 
 // 1
 class Home extends Component {
   render() {
     return (
-      <h1>Home</h1>
+      <div className="home-container">
+        <div className="home-poster-container">
+          <img className="home-poster" src="https://s3.ca-central-1.amazonaws.com/current-symposium/background.png" alt="poster" />
+        </div>
+      </div>
     );
   }
 }
@@ -17,7 +24,7 @@ class Home extends Component {
 class About extends Component {
   render() {
     return (
-      <div>
+      <div className="about-container">
         <Current overview={true}/>
         <h2>Organizers</h2>
         <Organizers />
@@ -30,18 +37,24 @@ class About extends Component {
 
 // 3
 class Current extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      data: aboutData
+    };
+  }
   render() {
     if (this.props.overview) {
       return (
         <div>
-          CURRENT is a multidisciplinary, intersectional, music and electronic art symposium working with female identified and non-binary artists in Vancouver and the Pacific Northwest. The first iteration of the project will be a 3-day, music and arts showcase featuring events, panels, youth mentorships, and workshops, which will take place July 28th-30th 2017 in Vancouver, Canada. The goals of this symposium are to foster and disseminate Feminist Electronic Art histories and artists, the teaching of skill sets, cross-pollination of ideas between diverse geographies, and intergenerational knowledge sharing. By offering public, free, all ages, panels and workshops, we wish to cultivate growth within the local community, and create a more equal landscape within the growing Electronic Arts ecology.
+          {this.state.data[0]}
         </div>
       );
     } else {
       return (
-        <div className="about-container">
-          <div className="about-child">
-            CURRENT is a multidisciplinary, intersectional, music and electronic art symposium working with female identified and non-binary artists in Vancouver and the Pacific Northwest. The first iteration of the project will be a 3-day, music and arts showcase featuring events, panels, youth mentorships, and workshops, which will take place July 28th-30th 2017 in Vancouver, Canada. The goals of this symposium are to foster and disseminate Feminist Electronic Art histories and artists, the teaching of skill sets, cross-pollination of ideas between diverse geographies, and intergenerational knowledge sharing. By offering public, free, all ages, panels and workshops, we wish to cultivate growth within the local community, and create a more equal landscape within the growing Electronic Arts ecology.
+        <div className="current-container">
+          <div className="current-child">
+            {this.state.data[0]}
           </div>
         </div>
       );
@@ -60,14 +73,16 @@ class Organizers extends Component {
   render() {
     const organizerSpecs = this.state.data.map((organizer, index) =>
       <div key={index} className="organizer-spec">
-      <img src={organizer.photo_url} className="organizer-photo" alt="organizers"/>
+        <img src={organizer.photo_url} className="organizer-photo" alt="organizers"/>
         <div className="organizer-description">
           <span className="organizer-name">{organizer.name}</span> {organizer.description}
         </div>
       </div>
     );
     return (
-      <div>{organizerSpecs}</div>
+      <div className="organizer-container">
+        {organizerSpecs}
+      </div>
     );
   }
 }
@@ -98,26 +113,29 @@ class Partners extends Component {
 }
 
 // 6
-class Artists extends Component {
+class Participants extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      data: participantData
+    };
+  }
   render() {
+    const participantSpecs = this.state.data.map((participant, index) =>
+      <div key={index} className="participant-spec">
+        <h2>{participant.name}</h2>
+      </div>
+    );
     return (
-      <div>
-        <h1>Artists</h1>
+      <div className="participant-container">
+        <canvas className="processing-participants" data-processing-sources={participantsProcessing} />
+        {participantSpecs}
       </div>
     );
   }
 }
 
 // 7
-class Volunteers extends Component {
-  render() {
-    return (
-      <h1>Volunteers</h1>
-    );
-  }
-}
-
-// 8
 class PanelsWorkshops extends Component {
   constructor(props) {
     super(props);
@@ -130,7 +148,7 @@ class PanelsWorkshops extends Component {
       <div key={index}>
         <h2>{workshop.name}</h2>
         <h3>{workshop.hosts.length === 0 ? "TBA" : workshop.hosts.join(', ')}</h3>
-        {workshop.description.map((para, index) => <p>{para}</p>)}
+        {workshop.description.map((para, index) => <p key={index}>{para}</p>)}
       </div>
     );
     const panels = this.state.data.panels.map((panel, index) =>
@@ -143,26 +161,28 @@ class PanelsWorkshops extends Component {
     return (
       <div className="panels-workshops-container">
         <div className="panel-workshop-child">
-          <h1 className="panel-workshop-header">Workshops</h1>
-          {workshops}
-        </div>
-        <div className="panel-workshop-child">
           <h1 className="panel-workshop-header">Panels</h1>
           {panels}
+        </div>
+        <div className="panel-workshop-child">
+          <h1 className="panel-workshop-header">Workshops</h1>
+          {workshops}
         </div>
       </div>
     );
   }
 }
 
-// 9
+// 8
 class Contact extends Component {
   render() {
     return (
-      <EmailForm />
+      <div className="contact-container">
+        <EmailForm />
+      </div>
     );
   }
 }
 
 // export
-export {Home, About, Current, Organizers, Partners, Artists, Volunteers, PanelsWorkshops, Contact}
+export {Home, About, Current, Organizers, Partners, Participants, PanelsWorkshops, Contact}
