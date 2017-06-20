@@ -128,7 +128,6 @@ class Participants extends Component {
     );
     return (
       <div className="participant-container">
-        <canvas className="processing-participants" data-processing-sources={participantsProcessing} />
         {participantSpecs}
       </div>
     );
