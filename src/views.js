@@ -146,16 +146,18 @@ class PanelsWorkshops extends Component {
       <div key={index} className="workshop-spec">
         <h2>{workshop.name}</h2>
         <h3>{workshop.date}</h3>
-        <h3>{workshop.hosts.length === 0 ? "TBA" : workshop.hosts.join(', ')}</h3>
-        {workshop.description.map((para, index) => <p key={index}>{para}</p>)}
+        <div className='panel-description'>
+          {workshop.description.map((para, index) => <p key={index}>{para}</p>)}
+        </div>
       </div>
     );
     const panels = this.state.data.panels.map((panel, index) =>
       <div key={index} className="panel-spec">
         <h2>{panel.name}</h2>
         <h3>{panel.date}</h3>
-        <h3>{panel.hosts.length === 0 ? "TBA" : panel.hosts.join(', ')}</h3>
+        <div className='panel-description'>
         {panel.description.map((para, index) => <p key={index}>{para}</p>)}
+        </div>
       </div>
     );
     return (

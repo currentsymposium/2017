@@ -337,6 +337,15 @@ a.view-link:visited {
 .panel-child {
   margin: 10px;
 }
+.panel-description > p {
+  margin-bottom: 0;
+}
+.panel-spec > h2 {
+  margin-top: 0px;
+}
+.workshop-spec > h2 {
+  margin-top: 0px;
+}
 
 .workshop-spec {
   border: 2px white solid;
@@ -391,5 +400,12 @@ a.view-link:visited {
   }
   .workshop-spec {
     width: calc(100% - 4px - 4% - 10px);
+  }
+}
+
+@media (min-width: 810px) {
+  .content-container {
+    padding-left: calc(20px + (100vw - 810px) / 2);
+    padding-right: calc(20px + (100vw - 810px) / 2);
   }
 }
