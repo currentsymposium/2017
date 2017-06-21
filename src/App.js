@@ -61,9 +61,6 @@ class App extends Component {
         <div className="app">
           <div className={this.state.inIntro === true ? "app-intro": "app-intro fade-out"} onClick={this.toggleIntro} >
             <canvas className="processing-intro" data-processing-sources={introProcessing} />
-            <canvas className="processing-intro" data-processing-sources={introProcessing} />
-            <canvas className="processing-intro" data-processing-sources={introProcessing} />
-            <canvas className="processing-intro" data-processing-sources={introProcessing} />
           </div>
           <div className={this.state.inIntro === true ? "app-main" : "app-main fade-in"}>
             <div className="app-header" onClick={this.dummyEvent}>

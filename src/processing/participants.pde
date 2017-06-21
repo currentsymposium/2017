@@ -1,4 +1,3 @@
-
 color c = color(255);//the secret colour
 String word = "Openprocessing";
 String allwords ="ANDREA LUKIC CCL HOLLOW VERTICES HOLLY PECK INTERSESSIONS Kiran Bhumber minimalviolence Nancy Dru Nicola Awang Norah Lorway PRADO TUF x/o ";
@@ -16,7 +15,6 @@ void setup() {
   background(22,66,150);
   textSize(tSize);
   fill(c);
-  text(word, start.x, start.y+tSize); //writing invisible text
   loadPixels(); //saving all pixels of the sketch
   for (int i = 0; i < PNum; i++) {//creating the particles
     Points.add(new particle(random(width),random(height)));
@@ -44,7 +42,7 @@ void draw(){
     if (F>=Arr.length){F=0;};
   }else if (restZ<=4){//slowing down on the last 4 frames
     for (particle P : Points) {
-      P.velocity.mult(0.050);
+      P.velocity.mult(0.5);
     }
   }
   restZ-=1;
