@@ -132,13 +132,12 @@ class EmailForm extends Component {
     this.clearState();
   }
   render() {
-    // TODO Add a "I want to volunteer" field to form
     return (
       <form className="email-form" onSubmit={this.handleSubmit}>
-        <input className="form-input" type="text" name="name" placeholder="Your name" value={this.state.name} onChange={this.handleInputChange} />
-        <input className="form-input" type="email" name="email" placeholder="Your email" value={this.state.email} onChange={this.handleInputChange} />
-        <input className="form-input" type="text" name="_subject" placeholder="Your subject" value={this.state._subject} onChange={this.handleInputChange} />
-        <textarea className="form-text" name="message" placeholder="Your message" value={this.state.message} onChange={this.handleInputChange} />
+        <input className="form-input" type="text" name="name" placeholder="Name" value={this.state.name} onChange={this.handleInputChange} />
+        <input className="form-input" type="email" name="email" placeholder="Email" value={this.state.email} onChange={this.handleInputChange} />
+        <input className="form-input" type="text" name="_subject" placeholder="Subject" value={this.state._subject} onChange={this.handleInputChange} />
+        <textarea className="form-text" name="message" placeholder="Message" value={this.state.message} onChange={this.handleInputChange} />
         <label className="volunteer-label"><input className="form-check" type="checkbox" name="volunteer" checked={this.state.volunteer} onChange={this.handleInputChange}/><span>&nbsp;I would like to volunteer for CURRENT</span></label>
         <input type="text" name="_gotcha" value={this.state._gotcha} onChange={this.handleInputChange} style={{display: "none"}} />
         <input type="hidden" name="_format" value="plain" onChange={this.handleInputChange} />

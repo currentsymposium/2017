@@ -5,6 +5,7 @@ import {
   Link
 } from 'react-router-dom';
 import bgProcessing from './processing/bg.pde'
+import introProcessing from './processing/participants.pde'
 import './css/App.css';
 import { Home, About, Current, Organizers, Partners, Participants, PanelsWorkshops, Contact } from './views.js';
 import {ViewButton} from './components.js'
@@ -36,7 +37,8 @@ class App extends Component {
     let viewPath = nextProps.location.pathname.substr(1);
     this.setState({view: viewPath === "" ? "Home" : viewPath.charAt(0).toUpperCase() + viewPath.slice(1)});
   }
-  toggleIntro() {
+  toggleIntro(event) {
+    event.preventDefault();
     this.setState({
       inIntro: false
     });
@@ -58,7 +60,10 @@ class App extends Component {
       <Router>
         <div className="app">
           <div className={this.state.inIntro === true ? "app-intro": "app-intro fade-out"} onClick={this.toggleIntro} >
-            <img src="https://s3.ca-central-1.amazonaws.com/current-symposium/current-logo.png" className="app-logo intro" alt="logo" />
+            <canvas className="processing-intro" data-processing-sources={introProcessing} />
+            <canvas className="processing-intro" data-processing-sources={introProcessing} />
+            <canvas className="processing-intro" data-processing-sources={introProcessing} />
+            <canvas className="processing-intro" data-processing-sources={introProcessing} />
           </div>
           <div className={this.state.inIntro === true ? "app-main" : "app-main fade-in"}>
             <div className="app-header" onClick={this.dummyEvent}>

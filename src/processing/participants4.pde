@@ -8,8 +8,8 @@ ArrayList<particle> Points = new ArrayList<particle>();
 int index=0;
 float restZ=0;
 int F = 0;
-float CTime=100;//number of frames between words
-int PNum =0;//number of particles
+float CTime=250;//number of frames between words
+int PNum =10000;//number of particles
 void setup() {
   size(900,300 );
   frameRate(200);
@@ -22,7 +22,7 @@ void setup() {
     Points.add(new particle(random(width),random(height)));
   }
 }
-
+ 
 void draw(){
   background(40,40,130);
   int Len = word.length();
@@ -66,7 +66,7 @@ void draw(){
   }
   runP();//simulating and drawing the particles
 }
-
+ 
 void runP(){
   for (particle P : Points) {
     stroke(255,255,255 ,128/sqrt(P.velocity.mag()+1));
@@ -74,7 +74,7 @@ void runP(){
     line(P.location.x, P.location.y, P.location.x+P.velocity.x, P.location.y+P.velocity.y);
   }//drawig particles as lines for a smoother look
 }
-
+ 
 class particle{
   PVector location;
   PVector velocity;
@@ -84,3 +84,6 @@ class particle{
     velocity = new PVector(0.0, 0.0);
   }
 }
+
+
+

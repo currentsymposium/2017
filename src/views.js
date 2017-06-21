@@ -145,6 +145,7 @@ class PanelsWorkshops extends Component {
     const workshops = this.state.data.workshops.map((workshop, index) =>
       <div key={index} className="workshop-spec">
         <h2>{workshop.name}</h2>
+        <h3>{workshop.date}</h3>
         <h3>{workshop.hosts.length === 0 ? "TBA" : workshop.hosts.join(', ')}</h3>
         {workshop.description.map((para, index) => <p key={index}>{para}</p>)}
       </div>
@@ -152,6 +153,7 @@ class PanelsWorkshops extends Component {
     const panels = this.state.data.panels.map((panel, index) =>
       <div key={index} className="panel-spec">
         <h2>{panel.name}</h2>
+        <h3>{panel.date}</h3>
         <h3>{panel.hosts.length === 0 ? "TBA" : panel.hosts.join(', ')}</h3>
         {panel.description.map((para, index) => <p key={index}>{para}</p>)}
       </div>
