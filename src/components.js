@@ -108,7 +108,7 @@ class EmailForm extends Component {
   emailFormSorter(data) {
     var formData = {}
     const keys = ["_gotcha", "_format", "name", "email", "_subject", "message", "volunteer"];
-    keys.forEach(function(key) {
+    keys.forEach((key) => {
       if (data[key] !== "") {
         formData[key] = data[key];
       }
