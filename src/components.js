@@ -119,15 +119,21 @@ class EmailForm extends Component {
     event.preventDefault();
     let formData = this.emailFormSorter(this.state)
 
-    fetch(`https://formspree.io/currentsymposium@gmail.com`, {
+    fetch(`https://formspree.io/mattasaminew@gmail.com`, {
         method: 'POST',
         body: JSON.stringify(formData),
         headers: {
           'Content-Type': 'application/json'
-        }})
-    .then( response => response.json() )
-    .then( json => console.log(json) )
-    .catch( error => console.log(error) );
+        }}
+    ).then( response => response.json()
+    ).then( json => {
+                      if (json.hasOwnProperty('success')) {
+                        console.log(this);
+                      }
+                    }
+    ).catch( error => console.log(error) );
+    // if json has key success
+
 
     this.clearState();
   }
