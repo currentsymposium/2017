@@ -5,7 +5,6 @@ import {
   Link
 } from 'react-router-dom';
 import bgProcessing from './processing/bg.pde'
-import introProcessing from './processing/participants.pde'
 import './css/App.css';
 import { Home, About, Current, Organizers, Partners, Participants, PanelsWorkshops, Contact } from './views.js';
 import {ViewButton} from './components.js'
@@ -60,7 +59,7 @@ class App extends Component {
       <Router>
         <div className="app">
           <div className={this.state.inIntro === true ? "app-intro": "app-intro fade-out"} onClick={this.toggleIntro} >
-            <canvas className="processing-intro" data-processing-sources={introProcessing} />
+            <img src="https://s3.ca-central-1.amazonaws.com/current-symposium/current-logo.png" className="app-logo intro" alt="logo" />
           </div>
           <div className={this.state.inIntro === true ? "app-main" : "app-main fade-in"}>
             <div className="app-header" onClick={this.dummyEvent}>

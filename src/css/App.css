@@ -398,14 +398,17 @@ a.view-link:visited {
   .panel-spec {
     width: calc(100% - 4px - 4% - 10px);
   }
+  .participant-container {
+    font-size: small;
+  }
   .workshop-spec {
     width: calc(100% - 4px - 4% - 10px);
   }
 }
 
-@media (min-width: 810px) {
+@media (min-width: 820px) {
   .content-container {
-    padding-left: calc(20px + (100vw - 810px) / 2);
-    padding-right: calc(20px + (100vw - 810px) / 2);
+    padding-left: calc((100vw - 820px) / 2);
+    padding-right: calc((100vw - 820px) / 2);
   }
 }
