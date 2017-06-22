@@ -19,13 +19,17 @@ class Home extends Component {
   }
   offLinkHover() {
     this.setState({linkHover: false});
-
   }
   render() {
     return (
       <div className="home-container">
-        <div className="home-poster-container" onMouseEnter={this.onLinkHover} onMouseLeave={this.offLinkHover}>
-          <img className="home-poster" src="https://s3.ca-central-1.amazonaws.com/current-symposium/background.png" alt="poster" />
+        <div className="home-poster-container" onMouseEnter={this.onLinkHover} onMouseLeave={this.offLinkHover} >
+          <a className="home-poster-link" href="">
+            <img className="home-poster" src="https://s3.ca-central-1.amazonaws.com/current-symposium/background.png" alt="poster" />
+            <div className={this.state.linkHover ? "home-poster-layover active" : "home-poster-layover"}>
+              GET TICKETS
+            </div>
+          </a>
         </div>
       </div>
     );
