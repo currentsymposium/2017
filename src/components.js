@@ -131,7 +131,7 @@ class EmailForm extends Component {
     event.preventDefault();
     let formData = this.emailFormSorter(this.state)
 
-    fetch(`https://formspree.io/mattasaminew@gmail.com`, {
+    fetch(`https://formspree.io/currentsymposium@gmail.com`, {
       method: 'POST',
       body: JSON.stringify(formData),
       headers: {'Content-Type': 'application/json'}
