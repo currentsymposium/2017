@@ -151,10 +151,14 @@ a.view-link:visited {
   padding: 20px;
   width: calc(100% - 40px);
 }
+.about-container-spec {
+
+}
 
 .organizer-container {
   height: 100%;
   width: 100%;
+  box-sizing: border-box;
   display: flex;
   /*flex-direction: column;*/
   flex-wrap: wrap;
@@ -185,6 +189,7 @@ a.view-link:visited {
 .partner-container {
   height: 100%;
   width: 100%;
+  box-sizing: border-box;
   display: flex;
   flex-wrap: wrap;
   align-items: flex-start;
@@ -215,6 +220,7 @@ a.view-link:visited {
 .current-container {
   height: 100%;
   width: 100%;
+  box-sizing: border-box;
   display: flex;
   justify-content: flex-start;
   align-items: center;
@@ -224,19 +230,20 @@ a.view-link:visited {
   padding: 40px;
   font-size: large;
   align-self: center;
-  position:absolute;
+  position: absolute;
   top: 0px;
-  left: 0px;
   min-height: 100%;
   box-sizing: border-box;
   display: flex;
   justify-content: center;
   align-items: center;
+  width: calc(100% - (((100vw - 820px))));
 }
 
 .panels-workshops-container {
   height: 100%;
   width: 100%;
+  box-sizing: border-box;
   /*display: flex;*/
   /*flex-direction: column;*/
 }
@@ -254,6 +261,7 @@ a.view-link:visited {
   flex-wrap: wrap;
   height: 100%;
   width: 100%;
+  box-sizing: border-box;
 }
 .processing-participants {
   align-self: center;
@@ -268,9 +276,35 @@ a.view-link:visited {
 .contact-container {
   height: 100%;
   width: 100%;
+  position: relative;
   display: flex;
   justify-content: center;
   align-items: flex-start;
+}
+.email-status-container {
+  position: absolute;
+  opacity: 0.3;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: opacity 0.3s linear, z-index 0.3s;
+  z-index: -1;
+}
+.email-status-container.success {
+  background-color: green;
+}
+.email-status-container.fail {
+  background-color: red;
+}
+.email-status-container.active {
+  z-index: 1000000000000000000000000000000000;
+  opacity: 0.6;
+}
+.email-status-message {
+  font-size: xx-large;
+  opacity: 1;
 }
 .email-form {
   align-self: center;
@@ -301,6 +335,7 @@ a.view-link:visited {
 .home-container {
   height: 100%;
   width: 100%;
+  box-sizing: border-box;
   display: flex;
   justify-content: flex-start;;
   align-items: center;
@@ -407,7 +442,7 @@ a.view-link:visited {
 }
 
 @media (min-width: 820px) {
-  .content-container {
+  .content-container > .about-container-spec, .content-container > .home-container, .content-container > .current-container, .content-container > .organizer-container, .content-container > .partner-container, .content-container > .participant-container, .content-container > .panels-workshops-container  {
     padding-left: calc((100vw - 820px) / 2);
     padding-right: calc((100vw - 820px) / 2);
   }

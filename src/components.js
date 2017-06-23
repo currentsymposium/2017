@@ -85,6 +85,18 @@ class EmailForm extends Component {
     this.handleSubmit = this.handleSubmit.bind(this);
     this.clearState = this.clearState.bind(this);
   }
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.success) {
+      setTimeout(() => {
+        this.props.offSuccess();
+      }, 1500)
+    }
+    if (nextProps.fail) {
+      setTimeout(() => {
+        this.props.offFail();
+      }, 1500)
+    }
+  }
   clearState() {
     this.setState({
       _gotcha: "",
@@ -120,22 +132,24 @@ class EmailForm extends Component {
     let formData = this.emailFormSorter(this.state)
 
     fetch(`https://formspree.io/mattasaminew@gmail.com`, {
-        method: 'POST',
-        body: JSON.stringify(formData),
-        headers: {
-          'Content-Type': 'application/json'
-        }}
-    ).then( response => response.json()
-    ).then( json => {
-                      if (json.hasOwnProperty('success')) {
-                        console.log(this);
-                      }
-                    }
-    ).catch( error => console.log(error) );
-    // if json has key success
-
-
-    this.clearState();
+      method: 'POST',
+      body: JSON.stringify(formData),
+      headers: {'Content-Type': 'application/json'}
+    })
+    .then( response => response.json() )
+    .then( json => {
+      this.clearState();
+      if (json.hasOwnProperty('success')) {
+        this.props.onSuccess();
+      } else {
+        this.props.onFail();
+      }
+    })
+    .catch( error => {
+      console.log(error);
+      this.clearState();
+      this.props.onFail();
+    });
   }
   render() {
     return (

@@ -23,12 +23,14 @@ class Home extends Component {
 class About extends Component {
   render() {
     return (
-      <div className="about-container">
-        <Current overview={true}/>
-        <h2>Organizers</h2>
-        <Organizers />
-        <h2>Partners</h2>
-        <Partners overview={true}/>
+      <div className="about-container-spec">
+        <div className="about-container">
+          <Current overview={true}/>
+          <h2>Organizers</h2>
+          <Organizers />
+          <h2>Partners</h2>
+          <Partners overview={true}/>
+        </div>
       </div>
     );
   }
@@ -181,10 +183,39 @@ class PanelsWorkshops extends Component {
 
 // 8
 class Contact extends Component {
+  constructor() {
+    super();
+    this.state = {
+      success: false,
+      fail: false
+    }
+    this.onSuccess = this.onSuccess.bind(this);
+    this.offSuccess = this.offSuccess.bind(this);
+    this.onFail = this.onFail.bind(this);
+    this.offFail = this.offFail.bind(this);
+  }
+  onSuccess() {
+    this.setState({success: true});
+  }
+  offSuccess() {
+    this.setState({success: false})
+  }
+  onFail() {
+    this.setState({fail: true})
+  }
+  offFail() {
+    this.setState({fail: false})
+  }
   render() {
     return (
       <div className="contact-container">
-        <EmailForm />
+        <EmailForm onSuccess={this.onSuccess} offSuccess={this.offSuccess} onFail={this.onFail} offFail={this.offFail} success={this.state.success} fail={this.state.fail}/>
+        <div className={this.state.fail ? "email-status-container fail active" : "email-status-container fail"}>
+          <span className="email-status-message">ERROR</span>
+        </div>
+        <div className={this.state.success ? "email-status-container success active" : "email-status-container success"}>
+          <span className="email-status-message">SENT</span>
+        </div>
       </div>
     );
   }
