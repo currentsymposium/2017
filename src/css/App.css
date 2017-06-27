@@ -323,7 +323,7 @@ a.view-link:visited {
   width: 100%;
   background-color: rgb(40,40,130);
   opacity: 0;
-  transition: opacity 0.5s linear;
+  transition: opacity 0.3s linear;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -335,6 +335,9 @@ a.view-link:visited {
 a.home-poster-link {
   text-decoration: none;
   color: white;
+}
+.home-poster-layover-text {
+  opacity: 1;
 }
 
 .panel-spec {
