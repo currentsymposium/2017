@@ -8,11 +8,28 @@ import participantData from './json/participants.json'
 
 // 1
 class Home extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {linkHover: false};
+    this.onLinkHover = this.onLinkHover.bind(this);
+    this.offLinkHover = this.offLinkHover.bind(this);
+  }
+  onLinkHover() {
+    this.setState({linkHover: true});
+  }
+  offLinkHover() {
+    this.setState({linkHover: false});
+  }
   render() {
     return (
       <div className="home-container">
-        <div className="home-poster-container">
-          <img className="home-poster" src="https://s3.ca-central-1.amazonaws.com/current-symposium/background.png" alt="poster" />
+        <div className="home-poster-container" onMouseEnter={this.onLinkHover} onMouseLeave={this.offLinkHover} >
+          <a className="home-poster-link" href="https://www.eventbrite.com/e/current-a-pacific-northwest-feminist-electronic-art-symposium-tickets-35585335697" target="_blank" rel="noopener noreferrer">
+            <img className="home-poster" src="https://s3.ca-central-1.amazonaws.com/current-symposium/background.png" alt="poster" />
+            <div className={this.state.linkHover ? "home-poster-layover active" : "home-poster-layover"}>
+              <span className="home-poster-layover-text">GET TICKETS</span>
+            </div>
+          </a>
         </div>
       </div>
     );

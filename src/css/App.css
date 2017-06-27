@@ -342,15 +342,36 @@ a.view-link:visited {
 }
 .home-poster-container {
   text-align: center;
+  position: relative;
 }
 .home-poster {
   width: 100%;
   max-height: 100%;
-  opacity: 0.2;
-  transition: opacity 1s linear;
-}
-.home-poster:hover {
   opacity: 0.6;
+}
+.home-poster-layover {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  height: 100%;
+  width: 100%;
+  background-color: rgb(40,40,130);
+  opacity: 0;
+  transition: opacity 0.3s linear;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: xx-large;
+}
+.home-poster-layover.active {
+  opacity: 0.75;
+}
+a.home-poster-link {
+  text-decoration: none;
+  color: white;
+}
+.home-poster-layover-text {
+  opacity: 1;
 }
 
 .panel-spec {
