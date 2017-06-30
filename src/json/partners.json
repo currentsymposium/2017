@@ -23,9 +23,15 @@
 		"description": "is an intersectional female/non-binary/trans collective with headquarters in Seattle and a strong presence in digital realms.TUF members include promoters, curators, installation/visual artists, DJ’s, producers, sound engineers, writers, dancers, and designers."
 	},
 	{
-		"name": "Women’s Beat League",
+		"name": "S1",
 		"website_url": "",
-		"logo_url": "https://s3.ca-central-1.amazonaws.com/current-symposium/partners/WBLweb1.png",
+		"logo_url": "https://s3.ca-central-1.amazonaws.com/current-symposium/partners/s1-logo.png",
 		"description": "is a Portland, Oregon collective hosting workshops, lectures, and parties focused on representing the female-identified and nonbinary views in electronic music."
+	},
+	{
+		"name": "CiTR 101.9 FM",
+		"website_url": "",
+		"logo_url": "https://s3.ca-central-1.amazonaws.com/current-symposium/partners/citr-logo.jpg",
+		"description": "is the broadcasting voice of the University of British Columbia, situated on the unceded, traditional Coast Salish territory of the Hən̓q̓əmin̓əm̓ speaking Musqueam peoples. Run by the Student Radio Society of UBC, CiTR offers students and community members broadcast training and access to the airwaves, broadcasting 100+ locally-focused radio programs in seven different languages, streamed online and available as podcasts. Since 1983, CiTR has also published Discorder Magazine, providing Vancouver’s best monthly coverage of the local music and arts scene. Discorder is distributed for free throughout Vancouver, with a circulation of 8,000 copies."
 	}
 ]

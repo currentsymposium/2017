@@ -63,9 +63,11 @@ class App extends Component {
           </div>
           <div className={this.state.inIntro === true ? "app-main" : "app-main fade-in"}>
             <div className="app-header" onClick={this.dummyEvent}>
-              <Link to="/" className="logo-link">
-                <img src="https://s3.ca-central-1.amazonaws.com/current-symposium/current-logo.png" onClick={this.bringHome} className="app-logo main" alt="logo" />
-              </Link>
+              <div className="logo-link-container">
+                <Link to="/" className="logo-link">
+                  <img src="https://s3.ca-central-1.amazonaws.com/current-symposium/current-logo.png" onClick={this.bringHome} className="app-logo main" alt="logo" />
+                </Link>
+              </div>
               <div className="button-container">
                 <ViewButton view="About" currentView={this.state.view} toggleView={this.toggleView} dropdown={true} dropdownViews={dropdownViews}/>
                 {viewButtons}

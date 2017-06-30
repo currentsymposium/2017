@@ -64,7 +64,7 @@ class Current extends Component {
   render() {
     if (this.props.overview) {
       return (
-        <div>
+        <div className="current-container">
           {this.state.data[0]}
         </div>
       );
@@ -116,7 +116,9 @@ class Partners extends Component {
   render() {
     const partnerSpecs = this.state.data.map((partner, index) =>
       <div key={index} className="partner-spec">
-        <img src={partner.logo_url} className="partner-logo" alt="partner logo"/>
+        <div className="partner-logo-container">
+          <img src={partner.logo_url} className="partner-logo" alt="partner logo"/>
+        </div>
         <div className="partner-description">
           <span className="partner-name">{partner.name}</span> {partner.description}
         </div>
