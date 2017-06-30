@@ -289,6 +289,30 @@ a.view-link:visited {
   justify-content: center;
   align-items: flex-start;
   overflow-x: hidden;
+  align-content: center;
+}
+.contact-container-child {
+  align-self: center;
+  max-width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  align-content: center;
+}
+.volunteer-link {
+  color: white;
+  font-size: x-large;
+  padding: 15px;
+  justify-self: flex-start;
+}
+.contact-form {
+  padding: 15px;
+  width: calc(100% - 30px);
+}
+.contact-form-label {
+  font-size: large;
 }
 .email-status-container {
   position: absolute;
@@ -316,7 +340,6 @@ a.view-link:visited {
   opacity: 1;
 }
 .email-form {
-  align-self: center;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -536,5 +559,11 @@ a.home-poster-link {
   .content-container > .about-container-spec, .content-container > .home-container, .content-container > .current-container, .content-container > .organizer-container, .content-container > .partner-container, .content-container > .participant-container, .content-container > .panels-workshops-container  {
     padding-left: calc((100vw - 820px) / 2);
     padding-right: calc((100vw - 820px) / 2);
+  }
+}
+
+@media (max-height: 550px) {
+  .contact-container-child {
+    justify-content: flex-start;
   }
 }

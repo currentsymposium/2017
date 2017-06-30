@@ -201,7 +201,7 @@ class PanelsWorkshops extends Component {
 }
 
 // 8
-class Contact extends Component {
+class GetInvolved extends Component {
   constructor() {
     super();
     this.state = {
@@ -228,7 +228,14 @@ class Contact extends Component {
   render() {
     return (
       <div className="contact-container">
-        <EmailForm onSuccess={this.onSuccess} offSuccess={this.offSuccess} onFail={this.onFail} offFail={this.offFail} success={this.state.success} fail={this.state.fail}/>
+        <div className="contact-container-child">
+          <a className="volunteer-link" target="_blank" rel="noopener noreferrer" href="https://docs.google.com/forms/d/e/1FAIpQLSd_JmnhuSnIn2FkgtKshrLn-vZTJsujT-n3WpKzaQHlW7NAiQ/viewform"> <div>Sign up to volunteer!</div>
+          </a>
+          <div className="contact-form">
+            <div className="contact-form-label">Contact</div>
+            <EmailForm onSuccess={this.onSuccess} offSuccess={this.offSuccess} onFail={this.onFail} offFail={this.offFail} success={this.state.success} fail={this.state.fail}/>
+          </div>
+        </div>
         <div className={this.state.fail ? "email-status-container fail active" : "email-status-container fail"}>
           <span className="email-status-message">ERROR</span>
         </div>
@@ -241,4 +248,4 @@ class Contact extends Component {
 }
 
 // export
-export {Home, About, Current, Organizers, Partners, Participants, PanelsWorkshops, Contact}
+export {Home, About, Current, Organizers, Partners, Participants, PanelsWorkshops, GetInvolved}
