@@ -6,7 +6,7 @@ import {
 } from 'react-router-dom';
 import bgProcessing from './processing/bg.pde'
 import './css/App.css';
-import { Home, About, Current, Organizers, Partners, Participants, PanelsWorkshops, GetInvolved } from './views.js';
+import { Home, About, Current, Organizers, Partners, Participants, Schedule, PanelsWorkshops, GetInvolved } from './views.js';
 import {ViewButton} from './components.js'
 
 class App extends Component {
@@ -52,7 +52,7 @@ class App extends Component {
     this.setState({view: "Home"})
   }
   render() {
-    const availableViews = ['Participants', 'Panels + Workshops', 'Get Involved'];
+    const availableViews = ['Participants', 'Schedule', 'Panels + Workshops', 'Get Involved'];
     const viewButtons = availableViews.map((view, index) => <ViewButton key={index} view={view} currentView={this.state.view} toggleView={this.toggleView} dropdown={false}/>);
     const dropdownViews = ['Current', 'Organizers', 'Partners'].map((view, index) => <ViewButton key={index} view={view} currentView={this.state.view} toggleView={this.toggleView} dropdown={false} childOfDrop={true}/>)
     return (
@@ -80,6 +80,7 @@ class App extends Component {
               <Route exact path="/organizers" component={Organizers}/>
               <Route exact path="/partners" component={Partners}/>
               <Route exact path="/participants" component={Participants}/>
+              <Route exact path="/schedule" component={Schedule}/>
               <Route exact path="/panels+workshops" component={PanelsWorkshops}/>
               <Route exact path="/getinvolved" component={GetInvolved}/>
             </div>

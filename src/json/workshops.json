@@ -1,24 +1,42 @@
 {
 	"workshops": [{
-		"name": "Atari Punk Console Building and Sonic Pi",
-		"hosts": ["Kiran Bhumber", "Norah Lorway"],
-		"date": "July 29, 2017 - 12-6PM",
-		"description": ["In this joint workshop, participants will learn a variety of electronic music synthesis techniques, both hands-on with hardware and software implementation.", "The Atari Punk Console is a classic synthesizer for DIY synth makers and circuit benders. In this workshop, participants will learn the basics of circuitry, electronics, and soldering. At the end of the workshop, participants will have their own synthesizer built from scratch which they can take home.", "Sonic Pi is an audio programming language intended for all users. This open-source software is powerful for audio synthesis and live-coding performance. In this workshop, participants will learn the basics of synthesis using code, as well as live coding performance practice."]
+		"name": "Intro to Synth Building and Live Coding",
+		"venue": "Venue TBA",
+		"hosts": "Kiran Bhumber & Norah Lorway",
+		"date": "July 29, 2017 - 1-6PM (10 spots, $50 hardware fees, all ages)",
+		"description": ["In this joint workshop, participants will learn a variety of electronic music synthesis techniques, both hands-on with hardware and software implementation. Please bring a laptop."]
 	}, {
 		"name": "Intersessions",
-		"hosts": [],
-		"date": "July 30, 2017 - 4-8PM",
+		"venue": "Venue TBA",
+		"hosts": "TBA",
+		"date": "July 30, 2017 - 1-6PM",
 		"description": ["Intersesssions is a DJ and sound focused workshop for women, and those within the LGBTQ2IA+ spectrum. The workshop series of artist-run seminars aims to address the significant gender and sexuality based imbalance within the music industry."]
+	}, {
+		"name": "Ableton Workshop",
+		"venue": "HiVE - 128 W Hasting St",
+		"hosts": "Kasey Riot",
+		"date": "July 30, 2017 - Time TBA",
+		"description": ["TBA"]
+	}, {
+		"name": "DIY Arduino Workshop",
+		"venue": "HiVE - 128 W Hasting St",
+		"hosts": "Tiffanie Lamiel",
+		"date": "July 30, 2017 - Time TBA (8 spots, $55 hardware fees, all ages)",
+		"description": ["Learn how to build an Arduino from scratch using commonly found electronic components and open source schematics. Breadboard, batteries and components included. Please bring a laptop. "]
 	}],
 	"panels": [{
 		"name": "Event Planning: Mobilizing Female-Identified & Non-Binary Artists and Better Allyship",
-		"hosts": [],
-		"date": "July 28, 2017 - 8-9PM",
+		"venue": "VAL Villa - 494 Railway St.",
+		"panelists": "Daniyah Angel, Soledad Muñoz, Daniela Karina, Cecilia Corsano-Leopizzi",
+		"moderator": "Jen Sungshine",
+		"date": "July 28, 2017 - 6-8PM (Free, all ages)",
 		"description": ["How can we support female/non-binary artists in our community? How can we create more inclusive spaces and lineups for works to be presented? What are some common challenges we face trying to produce events and how can we overcome them? How can men, or folks in position of influence be better allies? How can men engage with femme-lead initiatives in a supportive manner?"]
 	}, {
 		"name": "Intergenerational Knowledge Sharing in the Electronic Arts & Technology",
-		"hosts": [],
-		"date": "July 28, 2017 - 8-9PM",
+		"venue": "VAL Villa - 494 Railway St.",
+		"panelists": "Ruth Scheuing, Wynne Palmer, Norah Lorway, Kiran Bhumber, Holly Peck",
+		"moderator": "Jen Sungshine",
+		"date": "July 28, 2017 - 8-10PM (Free, all ages)",
 		"description": ["How do we facilitate better intergenerational mentorship for female/non-binary electronic artists? What are some advice established artists can provide to emerging artists to overcome personal, mental and social barriers?  Why is it important to be educated on feminist histories in electronic art?"]
 	}]
 }

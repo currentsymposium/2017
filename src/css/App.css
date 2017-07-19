@@ -281,6 +281,18 @@ a.view-link:visited {
   margin: 10px;
 }
 
+.schedule-container {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.schedule-img {
+  max-width: 100%;
+  max-height: 100%;
+}
+
 .contact-container {
   height: 100%;
   width: 100%;
@@ -431,8 +443,30 @@ a.home-poster-link {
 .panel-spec > h2 {
   margin-top: 0px;
 }
+.panel-spec > h3 {
+  margin-top: 0px;
+}
 .workshop-spec > h2 {
   margin-top: 0px;
+}
+.workshop-spec > h3 {
+  margin-top: 0px;
+}
+.panel-namer {
+  text-decoration: underline;
+}
+.workshop-clicker {
+  font-size: 1em !important;
+}
+.workshop-header-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.workshop-register-link {
+  color: white;
+  font-size: large;
+  justify-self: flex-start;
 }
 
 .workshop-spec {

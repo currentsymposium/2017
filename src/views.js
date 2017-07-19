@@ -154,7 +154,18 @@ class Participants extends Component {
   }
 }
 
-// 7
+//7
+class Schedule extends Component {
+  render() {
+    return (
+      <div className="schedule-container">
+        <img className="schedule-img" alt="schedule" src="https://s3.ca-central-1.amazonaws.com/current-symposium/currentprogram.jpg"/>
+      </div>
+    );
+  }
+}
+
+// 8
 class PanelsWorkshops extends Component {
   constructor(props) {
     super(props);
@@ -166,6 +177,8 @@ class PanelsWorkshops extends Component {
     const workshops = this.state.data.workshops.map((workshop, index) =>
       <div key={index} className="workshop-spec">
         <h2>{workshop.name}</h2>
+        <h3><span className="panel-namer">Hosts</span>: {workshop.hosts}</h3>
+        <h3>{workshop.venue}</h3>
         <h3>{workshop.date}</h3>
         <div className='panel-description'>
           {workshop.description.map((para, index) => <p key={index}>{para}</p>)}
@@ -175,6 +188,9 @@ class PanelsWorkshops extends Component {
     const panels = this.state.data.panels.map((panel, index) =>
       <div key={index} className="panel-spec">
         <h2>{panel.name}</h2>
+        <h3><span className="panel-namer">Panelists</span>: {panel.panelists}</h3>
+        <h3><span className="panel-namer">Moderator</span>: {panel.moderator}</h3>
+        <h3>{panel.venue}</h3>
         <h3>{panel.date}</h3>
         <div className='panel-description'>
         {panel.description.map((para, index) => <p key={index}>{para}</p>)}
@@ -190,7 +206,10 @@ class PanelsWorkshops extends Component {
           </div>
         </div>
         <div className="workshop-child">
-          <h1 className="workshop-header">Workshops</h1>
+          <div className="workshop-header-bar">
+            <h1 className="workshop-header">Workshops</h1>
+            <a className="workshop-register-link" target="_blank" rel="noopener noreferrer" href="https://www.eventbrite.com/e/current-a-pacific-northwest-feminist-electronic-art-symposium-tickets-35585335697">Register for workshops</a>
+          </div>
           <div className="workshop-spec-container">
             {workshops}
           </div>
@@ -200,7 +219,7 @@ class PanelsWorkshops extends Component {
   }
 }
 
-// 8
+// 9
 class GetInvolved extends Component {
   constructor() {
     super();
@@ -248,4 +267,4 @@ class GetInvolved extends Component {
 }
 
 // export
-export {Home, About, Current, Organizers, Partners, Participants, PanelsWorkshops, GetInvolved}
+export {Home, About, Current, Organizers, Partners, Participants, Schedule, PanelsWorkshops, GetInvolved}
